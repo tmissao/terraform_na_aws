@@ -4,3 +4,6 @@
 # s3_name = "workshop-my-terraform-bucket"
 # dynamo_name = "workshop-my-terraform-dynamodb"
 ############################################################################################
+
+sns_name = "my-sns-topic"
+sqs_name = "my-sqs"
