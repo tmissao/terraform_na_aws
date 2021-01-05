@@ -21,3 +21,11 @@
 #   value       =  aws_dynamodb_table.dynamodb.arn
 # }
 ############################################################################################
+
+output "topic1" {
+  value = module.topic1
+}
+
+output "topic2" {
+  value = module.topic2
+}

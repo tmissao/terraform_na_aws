@@ -30,24 +30,14 @@
 
 ############################################################################################
 
-resource "aws_sns_topic" "my_sns" {
-  name = var.sns_name
+module "topic1" {
+  source = "./modules/sns_sqs"
+  topic_name = var.topic1_name
   tags = var.tags
 }
 
-resource "aws_sqs_queue" "my_sqs" {
-  name = var.sqs_name
-  message_retention_seconds = var.sqs_retention_time
+module "topic2" {
+  source = "./modules/sns_sqs"
+  topic_name = var.topic2_name
   tags = var.tags
-}
-
-resource "aws_sns_topic_subscription" "my_sqs_on_my_sns" {
-  topic_arn = aws_sns_topic.my_sns.arn
-  protocol  = "sqs"
-  endpoint  = aws_sqs_queue.my_sqs.arn
-}
-
-resource "aws_sqs_queue_policy" "my_sqs_on_my_sns_policy" {
-  queue_url = aws_sqs_queue.my_sqs.id
-  policy = data.aws_iam_policy_document.iam_policy_document_my_sqs_on_my_sns_policy.json
 }

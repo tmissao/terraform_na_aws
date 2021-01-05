@@ -5,5 +5,5 @@
 # dynamo_name = "workshop-my-terraform-dynamodb"
 ############################################################################################
 
-sns_name = "my-sns-topic"
-sqs_name = "my-sqs"
+topic1_name = "my-topic-1"
+topic2_name = "my-topic-2"
