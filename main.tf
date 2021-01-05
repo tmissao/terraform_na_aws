@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "workshop-my-terraform-bucket"
+  bucket = var.s3_name
   acl    = "private"
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_public_access_block" "s3_bucket_access_block" {
@@ -12,7 +13,7 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket_access_block" {
 }
 
 resource "aws_dynamodb_table" "dynamodb" {
-  name = "workshop-my-terraform-dynamodb"
+  name = var.dynamo_name
   hash_key = "LockID"
   read_capacity  = 20
   write_capacity = 20
@@ -20,4 +21,5 @@ resource "aws_dynamodb_table" "dynamodb" {
     name = "LockID"
     type = "S"
   }
+  tags = var.tags
 }
