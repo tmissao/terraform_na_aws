@@ -1,2 +1,6 @@
-s3_name = "workshop-my-terraform-bucket"
-dynamo_name = "workshop-my-terraform-dynamodb"
+############################################################################################
+#                                AWS Backend S3                                            #
+############################################################################################
+# s3_name = "workshop-my-terraform-bucket"
+# dynamo_name = "workshop-my-terraform-dynamodb"
+############################################################################################
