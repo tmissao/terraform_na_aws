@@ -49,23 +49,5 @@ resource "aws_sns_topic_subscription" "my_sqs_on_my_sns" {
 
 resource "aws_sqs_queue_policy" "my_sqs_on_my_sns_policy" {
   queue_url = aws_sqs_queue.my_sqs.id
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "sqspolicy",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "sqs:SendMessage",
-      "Resource": "${aws_sqs_queue.my_sqs.arn}",
-      "Condition": {
-        "ArnEquals": {
-          "aws:SourceArn": "${aws_sns_topic.my_sns.arn}"
-        }
-      }
-    }
-  ]
-}
-POLICY
+  policy = data.aws_iam_policy_document.iam_policy_document_my_sqs_on_my_sns_policy.json
 }
